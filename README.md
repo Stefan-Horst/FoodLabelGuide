@@ -1,5 +1,7 @@
 # AISS_CV_Group_6
 
+### WIKI
+Important Information can be found here: https://gitlab.kit.edu/ukona/aiss_cv_group_6/-/wikis
 
 
 ## Getting started
