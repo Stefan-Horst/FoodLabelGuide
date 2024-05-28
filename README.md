@@ -1,9 +1,14 @@
 # AISS_CV_Group_6
 
-### WIKI
+## WIKI
 Important Information can be found here: https://gitlab.kit.edu/ukona/aiss_cv_group_6/-/wikis
 
+## Labelling 
+**IMPORTANT**
+Please read the [labelling wiki](https://gitlab.kit.edu/ukona/aiss_cv_group_6/-/wikis/Labeling-Convention) before labelling any images to ensure consistency with our labelling rules !!! 
 
+##
+##
 ## Getting started
 
 To make it easy for you to get started with GitLab, here's a list of recommended next steps.
