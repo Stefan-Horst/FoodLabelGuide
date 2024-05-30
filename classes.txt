@@ -6,3 +6,17 @@ rainforest_alliance
 bioland
 regional_fenster
 ohne_gentechnik
+naturland
+nutriscore_b
+nutriscore_c
+q_milch
+haltungsform_3
+traditional_speciality
+naturland_fair
+cocoa_for_future
+made_for_recyling
+edeka_bio
+blauer_engel
+fsc
+haltungsform_4
+haltungsform_2
