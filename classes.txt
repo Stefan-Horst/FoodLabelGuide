@@ -20,3 +20,15 @@ blauer_engel
 fsc
 haltungsform_4
 haltungsform_2
+dop_toscano
+igp_consorzio
+sin_gluten
+igp_italy
+dop_italy
+alpen_milch
+ohne_gentechnik_milch
+nutriscore_a
+bw_gesicherte_qualitaet
+brand_tested_in_germany
+asc_fisch
+vegan_vegan_sociaty
