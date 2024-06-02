@@ -32,3 +32,15 @@ bw_gesicherte_qualitaet
 brand_tested_in_germany
 asc_fisch
 vegan_vegan_sociaty
+msc_fisch
+protected_geographic_origin
+dlg_hergestellt_in_deutschland
+bw_bio
+bio_garantie
+protected_geographical_indication
+bio_initiative_huhn_hahn
+ohne_gentechnik_speech_bubble
+bio_kreis
+glutenfrei
+klima_neutral
+fair_bio
