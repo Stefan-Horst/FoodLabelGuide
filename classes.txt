@@ -11,7 +11,7 @@ nutriscore_b
 nutriscore_c
 q_milch
 haltungsform_3
-traditional_speciality
+speciality_eu
 naturland_fair
 cocoa_for_future
 made_for_recyling
@@ -23,15 +23,15 @@ haltungsform_2
 dop_toscano
 igp_consorzio
 sin_gluten
-igp_italy
-dop_italy
+igp_eu
+dop_eu
 alpen_milch
 ohne_gentechnik_milch
 nutriscore_a
 bw_gesicherte_qualitaet
 brand_tested_in_germany
 asc_fisch
-vegan_vegan_sociaty
+vegan_vegan_society
 msc_fisch
 protected_geographic_origin
 dlg_hergestellt_in_deutschland
@@ -48,3 +48,4 @@ oeko_test_sehr_gut
 deutsche_ernte
 vegetarisch_international
 nutriscore_d
+alnatura_bio
