@@ -44,3 +44,7 @@ bio_kreis
 glutenfrei
 klima_neutral
 fair_bio
+oeko_test_sehr_gut
+deutsche_ernte
+vegetarisch_international
+nutriscore_d
