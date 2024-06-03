@@ -50,3 +50,4 @@ vegetarisch_international
 nutriscore_d
 alnatura_bio
 green_point
+demeter
