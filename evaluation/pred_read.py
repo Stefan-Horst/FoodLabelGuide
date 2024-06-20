@@ -1,6 +1,6 @@
 import re
 
-file_name = "test_output"
+file_name = "data/test_output"
 
 file = open(file_name, "r")
 lines = file.readlines()
