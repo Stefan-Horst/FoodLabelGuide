@@ -1,0 +1,15 @@
+ CUDNN_HALF=1 
+net.optimized_memory = 0 
+mini_batch = 1, batch = 2, time_steps = 1, train = 0 
+Create CUDA-stream - 0 
+ Create cudnn-handle 0 
+nms_kind: greedynms (1), beta = 0.600000 
+nms_kind: greedynms (1), beta = 0.600000 
+
+ seen 64, trained: 48 K-images (0 Kilo-batches_64) 
+Enter Image Path:  Detection layer: 30 - type = 28 
+ Detection layer: 37 - type = 28 
+/home/oguyig00/aiss/aiss_cv_group_6/data/datasets/test_random/test.jpg: Predicted in 6.759000 milli-seconds.
+bio_hexagon: 81%	(left_x:  271   top_y:  270   width:  164   height:  109)
+eco_stars: 91%	(left_x:  477   top_y:  109   width:  103   height:   70)
+Enter Image Path: 
