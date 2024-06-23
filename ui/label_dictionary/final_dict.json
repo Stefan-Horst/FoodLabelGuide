@@ -1,0 +1,126 @@
+{
+    "alnatura_bio": {
+        "img_path": "alnatura_bio.jpg",
+        "description": "Dieses Siegel kennzeichnet Bio-Produkte der Marke Alnatura, die nach den EU-Bio-Verordnungen produziert werden. Es steht für nachhaltige Landwirtschaft und artgerechte Tierhaltung."
+    },
+    "asc_fish": {
+        "img_path": "asc_fish.png",
+        "description": "ASC Fish: Das ASC-Siegel (Aquaculture Stewardship Council) kennzeichnet Fischprodukte aus verantwortungsvoller Zucht. Es garantiert umweltfreundliche und sozial verantwortliche Aquakulturpraktiken."
+    },
+    "bioland": {
+        "img_path": "bioland.svg",
+        "description": "Bioland: Dieses Siegel steht für Produkte aus biologischem Anbau, die nach den strengen Richtlinien des Bioland-Verbandes hergestellt werden. Es fördert eine nachhaltige Landwirtschaft und den Schutz der natürlichen Ressourcen."
+    },
+    "bio_hexagon": {
+        "img_path": "bio_hexagon.svg",
+        "description": "Bio-Hexagon (EU-Bio-Logo): Das EU-Bio-Logo kennzeichnet Lebensmittel, die den EU-Vorschriften für ökologischen Landbau entsprechen. Es garantiert, dass mindestens 95% der Inhaltsstoffe aus ökologischem Anbau stammen."
+    },
+    "bio_initiative_huhn_hahn": {
+        "img_path": "bio_initiative_huhn_hahn.png",
+        "description": "Bio-Initiative Huhn & Hahn: Dieses Siegel steht für ein Programm, das sich für die Aufzucht von männlichen Küken in der Bio-Geflügelhaltung einsetzt. Es fördert tierfreundlichere Bedingungen und verhindert das Töten männlicher Küken."
+    },
+    "bio_kreis": {
+        "img_path": "bio_kreis.png",
+        "description": "Bio-Kreis: Das Bio-Kreis-Siegel kennzeichnet Produkte, die nach den strengen Kriterien des Bio-Kreis-Verbandes produziert werden. Es steht für regionalen und ökologischen Landbau sowie faire Handelsbeziehungen."
+    },
+    "blauer_engel": {
+        "img_path": "blauer_engel.png",
+        "description": "Blauer Engel: Dieses Umweltzeichen kennzeichnet besonders umweltfreundliche Produkte und Dienstleistungen. Es steht für hohe Ansprüche an Umwelt-, Gesundheits- und Gebrauchseigenschaften."
+    },
+    "bw_bio": {
+        "img_path": "bw_bio.jpg",
+        "description": "BW Bio: Dieses Siegel steht für Bio-Produkte aus Baden-Württemberg. Es garantiert regionale Herkunft und ökologische Produktion nach EU-Bio-Richtlinien."
+    },
+    "cocoa_for_future": {
+        "img_path": "cocoa_for_future.jpg",
+        "description": "Cocoa for Future: Dieses Siegel kennzeichnet nachhaltigen Kakaoanbau. Es steht für soziale und ökologische Standards im Kakaoanbau."
+    },
+    "demeter": {
+        "img_path": "demeter.svg",
+        "description": "Demeter: Demeter-Siegel kennzeichnet Produkte aus biologisch-dynamischem Anbau. Es steht für eine ganzheitliche und biodynamische Landwirtschaft, die auf anthroposophischen Prinzipien basiert."
+    },
+    "dop_eu": {
+        "img_path": "dop_eu.svg",
+        "description": "DOP EU: Das DOP-Siegel (Denominazione d'Origine Protetta) kennzeichnet Produkte mit geschützter Ursprungsbezeichnung aus der EU. Es garantiert traditionelle Herstellung und Herkunft aus einer bestimmten Region."
+    },
+    "eco_stars": {
+        "img_path": "eco_stars.svg",
+        "description": "Das EU-Bio-Siegel (mit Sternen) kennzeichnet Lebensmittel, die gemäß den strengen Vorgaben der EU-Öko-Verordnung hergestellt wurden. Es garantiert, dass mindestens 95% der Zutaten aus ökologischem Landbau stammen und die Produktion umweltfreundlich sowie tiergerecht erfolgt."
+    },
+    "edeka_bio": {
+        "img_path": "edeka_bio.jpg",
+        "description": "Edeka Bio: Edeka Bio kennzeichnet Bio-Produkte der Marke Edeka. Es garantiert ökologische Produktion nach den EU-Bio-Richtlinien."
+    },
+    "fairtrade_international": {
+        "img_path": "fairtrade_international.svg",
+        "description": "Fairtrade International: Das Fairtrade-Siegel steht für fair gehandelte Produkte. Es garantiert faire Arbeitsbedingungen und Preise für Produzenten in Entwicklungsländern."
+    },
+    "fsc": {
+        "img_path": "fsc.svg",
+        "description": "FSC (Forest Stewardship Council): Das FSC-Siegel kennzeichnet Holzprodukte aus verantwortungsvoll bewirtschafteten Wäldern. Es steht für nachhaltige Forstwirtschaft und den Schutz der Waldressourcen."
+    },
+    "green_point": {
+        "img_path": "green_point.svg",
+        "description": "Green Point: Dieses Siegel kennzeichnet Produkte, die am dualen System zur Abfallverwertung teilnehmen. Es steht für Recycling und Abfallvermeidung."
+    },
+    "igp_eu": {
+        "img_path": "igp_eu.svg",
+        "description": "IGP EU: Das IGP-Siegel (Indicazione Geografica Protetta) kennzeichnet Produkte mit geschützter geografischer Angabe aus der EU. Es garantiert besondere Qualität und traditionelle Herstellungsverfahren aus einer bestimmten Region."
+    },
+    "made_for_recycling": {
+        "img_path": "made_for_recycling.png",
+        "description": "Made for Recycling: Dieses Siegel kennzeichnet Produkte, die besonders gut recycelbar sind. Es steht für umweltfreundliche Verpackungen und Ressourcenschonung."
+    },
+    "msc_fish": {
+        "img_path": "msc_fish.svg",
+        "description": "MSC Fish: Das MSC-Siegel (Marine Stewardship Council) kennzeichnet Fischprodukte aus nachhaltiger Fischerei. Es garantiert umweltfreundliche und verantwortungsvolle Fischereipraktiken."
+    },
+    "naturland": {
+        "img_path": "naturland.png",
+        "description": "Naturland: Naturland-Siegel kennzeichnet Produkte aus ökologischer Landwirtschaft nach den strengen Richtlinien des Naturland-Verbandes. Es steht für umweltfreundliche und sozial verantwortliche Produktionsmethoden."
+    },
+    "naturland_fair": {
+        "img_path": "naturland_fair.jpg",
+        "description": "Naturland Fair: Dieses Siegel kombiniert die Anforderungen des Naturland-Siegels mit zusätzlichen fairen Handelsbedingungen. Es garantiert soziale Gerechtigkeit und faire Preise für Produzenten."
+    },
+    "nutriscore": {
+        "img_path": "nutriscore.jpg",
+        "description": "Nutri-Score: Der Nutri-Score ist ein Nährwertkennzeichnungssystem, das Lebensmittel anhand ihrer Nährwertqualität bewertet. Es soll Verbrauchern helfen, gesündere Lebensmittelentscheidungen zu treffen."
+    },
+    "oeko_test_sehr_gut": {
+        "img_path": "oeko_test_sehr_gut.jpg",
+        "description": "Öko-Test Sehr Gut: Dieses Siegel kennzeichnet Produkte, die im Öko-Test-Magazin mit 'Sehr Gut' bewertet wurden. Es steht für hohe Qualität und gesundheitliche Unbedenklichkeit der getesteten Produkte."
+    },
+    "ohne_gentechnik": {
+        "img_path": "ohne_gentechnik.svg",
+        "description": "Ohne Gentechnik: Dieses Siegel kennzeichnet Lebensmittel, die ohne Gentechnik hergestellt wurden. Es garantiert, dass keine gentechnisch veränderten Organismen im Produkt enthalten sind."
+    },
+    "qmilch": {
+        "img_path": "qmilch.jpg",
+        "description": "QMILCH: Das QMILCH-Siegel kennzeichnet Textilprodukte, die aus Milchproteinfaser hergestellt wurden. Es steht für nachhaltige und innovative Materialherstellung."
+    },
+    "rainforest_alliance": {
+        "img_path": "rainforest_alliance.png",
+        "description": "Rainforest Alliance: Das Rainforest-Alliance-Siegel kennzeichnet Produkte aus nachhaltiger Landwirtschaft und Forstwirtschaft. Es steht für den Schutz von Biodiversität und faire Arbeitsbedingungen."
+    },
+    "regional_fenster": {
+        "img_path": "regional_fenster.jpg",
+        "description": "Regionalfenster: Dieses Siegel kennzeichnet Lebensmittel, die aus einer bestimmten Region stammen. Es garantiert Transparenz und Regionalität der Produkte."
+    },
+    "speciality_eu": {
+        "img_path": "speciality_eu.svg",
+        "description": "Speciality EU: Dieses Siegel kennzeichnet Lebensmittel mit besonderer Qualiät oder traditioneller Herstellungsweise aus der EU. Es fördert traditionelle Handwerkskunst und regionale Spezialitäten."
+    },
+    "vegan_international": {
+        "img_path": "vegan_international.png",
+        "description": "Vegan International: Dieses Siegel kennzeichnet Produkte, die keine tierischen Inhaltsstoffe enthalten und ohne Tierversuche hergestellt wurden. Es steht für vegane und tierfreundliche Produkte."
+    },
+    "vegan_vegan_society": {
+        "img_path": "vegan_vegan_society.png",
+        "description": "Vegan Vegan Society: Dieses Siegel der Vegan Society kennzeichnet Produkte, die vollständig vegan sind. Es garantiert, dass keine tierischen Inhaltsstoffe oder Tierversuche beteiligt sind."
+    },
+    "vegetarisch_international": {
+        "img_path": "vegetarisch_international.png",
+        "description": "Vegetarisch International: Dieses Siegel kennzeichnet Produkte, die keine Fleisch- und Fischbestandteile enthalten. Es steht für vegetarische Lebensmittel, die ohne tierische Bestandteile außer Milch und Eiern hergestellt werden."
+    }
+}
