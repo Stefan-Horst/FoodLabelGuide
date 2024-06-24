@@ -58,6 +58,7 @@ def visualize(image_path, label_path, classes_path):
     plt.axis('off')
     plt.show()
 
+
 # Example usage:
 image_path = r"C:\Users\Felix\Documents\00_Master\03_SS-24\10_AISS_CV\datasets\training_data_augmented\positive\IMG_20240515_175800.jpg"
 label_path = r"C:\Users\Felix\Documents\00_Master\03_SS-24\10_AISS_CV\datasets\training_data_augmented\positive\IMG_20240515_175800.txt"
