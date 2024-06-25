@@ -3,7 +3,7 @@ import os
 import json
 
 # # Path to your SVG file
-svg_file_path = "./images/bio_hexagon.svg"
+#svg_file_path = "./images/bio_hexagon.svg"
 
 # # Read the SVG file content
 # with open(svg_file_path, "r") as file:
