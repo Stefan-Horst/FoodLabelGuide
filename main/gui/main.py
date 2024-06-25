@@ -1,35 +1,47 @@
 import streamlit as st
+from utils.globals import *
+import utils.util as util
 
 
-img = "/resources/images/bio_hexagon.svg"
+label_dict = util.read_label_dict("label_dict.json")
 
+st.set_page_config(page_title="Food Label Recognition", 
+                   page_icon="🧃",
+                   layout="wide") 
+
+## HEADER
 
 st.write("""
-# AISS CV
-This is a demo window.
+# Food Label Recognition
+Take picture of food products and get information on the labels their packaging might have.
 """)
-
 st.divider()
 
+## BODY - 2 COLUMNS
 
 col1, col2 = st.columns(2)
 
+## LEFT COLUMN
+
 col1.write("""
-## Image:
+## Image Placeholder:
 """)
+col1.image(str(DIR_IMG / "bio_hexagon.svg")) # placeholder
 
-col1.image(img)
+## RIGHT COLUMN
 
+model_output = util.get_newest_file_in_dir(DIR_OUTPUT)
+model_labels = util.read_yolo_output(model_output)
 
-for i in range(2):
-    with col2.expander("Label Name", expanded=True):
-        scol1, scol2 = st.columns(2)
+for label_name in model_labels.keys():
+    img_path, label_description = util.get_label_data(label_name, label_dict)
 
-        scol1.image(img)
+    with col2.expander(f"**{label_name}**", expanded=True):
+        scol1, scol2 = st.columns(2, vertical_alignment="center")
 
-        scol2.write("""
-        ## Label
-        This is text.
-        This is even more text.
-        This is a description.
+        scol1.image(str(img_path), width=200)
+
+        scol2.write(f"""
+        ## {label_name}
+        {label_description}
         """)
