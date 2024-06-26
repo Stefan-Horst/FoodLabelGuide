@@ -1,7 +1,7 @@
 import os
 import random
 from PIL import Image, ImageEnhance, ImageOps
-import numpy as np
+#import numpy as np
 
 def load_labels(label_path):
     with open(label_path, 'r') as file:
