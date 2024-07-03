@@ -57,10 +57,11 @@ def read_label_dict(file_name):
 # Get data for specific label dict entry by label name
 def get_label_data(label_name, dict):
     for label, val in dict.items():
+        name = val["name"]
         description = val["description"]
         img_file_name = val["img_path"]
         img_path = DIR_IMG / img_file_name
 
         if label == label_name:
-            return img_path, description
+            return img_path, name, description
     return
