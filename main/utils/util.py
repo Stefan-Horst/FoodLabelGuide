@@ -8,7 +8,10 @@ from utils.globals import *
 # Use to get most recent model output file in respective directory
 def get_newest_file_in_dir(dir_path):
     file_paths = sorted(Path(dir_path).iterdir(), key=os.path.getmtime)
-    return file_paths[-1]
+    if len(file_paths) > 0:
+        return file_paths[-1]
+    else:
+        return ""
 
 
 # Read yolo model output file and return predicted labels with bounding boxes as a dict

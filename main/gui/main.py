@@ -1,3 +1,4 @@
+import time
 import streamlit as st
 from utils.globals import *
 import utils.util as util
@@ -30,7 +31,10 @@ col1.image(str(DIR_IMG / "bio_hexagon.svg")) # placeholder
 
 ## RIGHT COLUMN
 
-model_output = util.get_newest_file_in_dir(DIR_OUTPUT)
+model_output = util.get_newest_file_in_dir(DIR_MODEL_RESULTS)
+while model_output == "": # wait until file exists in directory
+    model_output = util.get_newest_file_in_dir(DIR_MODEL_RESULTS)
+    time.sleep(0.2)
 model_labels = util.read_yolo_output(model_output)
 
 for label_name in model_labels.keys():
