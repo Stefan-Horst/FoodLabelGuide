@@ -3,8 +3,10 @@ import time
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
+# These paths need to be adjsuted to the correct directories
 PATH_TO_CONFIG = "cfg/yolov4-tiny-custom-test.cfg"
 PATH_TO_WEIGHTS = "/home/oguyig00/aiss/aiss_cv_group_6/data/datasets/backup/yolov4-tiny-custom-test_best.weights"
+PATH_TO_WATCH = "./test_dir"
 
 
 class ImageHandler(FileSystemEventHandler):
@@ -27,12 +29,11 @@ class ImageHandler(FileSystemEventHandler):
 
 
 if __name__ == "__main__":
-    path_to_watch = "./test_dir"  # TODO: Path to images dir needs to be changed
     event_handler = ImageHandler()
     observer = Observer()
-    observer.schedule(event_handler, path_to_watch, recursive=False)
+    observer.schedule(event_handler, PATH_TO_WATCH, recursive=False)
     observer.start()
-    print(f"Listening to folder {path_to_watch}")
+    print(f"Listening to folder {PATH_TO_WATCH}")
     try:
         while True:
             time.sleep(1)
