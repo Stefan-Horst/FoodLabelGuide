@@ -13,7 +13,7 @@ def get_newest_file_in_dir(dir_path):
 
 # Read yolo model output file and return predicted labels with bounding boxes as a dict
 def read_yolo_output(file_name):
-    path = DIR_OUTPUT / file_name
+    path = DIR_MODEL_RESULTS / file_name
     file = open(path, "r")
     lines = file.readlines()
 

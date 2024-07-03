@@ -2,11 +2,12 @@ import subprocess
 import time
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+from utils.globals import *
 
-# These paths need to be adjsuted to the correct directories
-PATH_TO_CONFIG = "cfg/yolov4-tiny-custom-test.cfg"
-PATH_TO_WEIGHTS = "/home/oguyig00/aiss/aiss_cv_group_6/data/datasets/backup/yolov4-tiny-custom-test_best.weights"
-PATH_TO_WATCH = "./test_dir"
+# These paths need to be adjusted to the correct directories
+PATH_TO_CONFIG = DIR_MODEL / "cfg/yolov4-tiny-custom-test.cfg"
+PATH_TO_WEIGHTS = DIR_MODEL / "data/datasets/backup/yolov4-tiny-custom-test_best.weights"
+PATH_TO_WATCH = DIR_MODEL_INPUT
 
 
 class ImageHandler(FileSystemEventHandler):
