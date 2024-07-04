@@ -41,10 +41,12 @@ col1, col2 = cont.columns(2)
 
 ## LEFT COLUMN
 
-col1.write("""
-## Image Placeholder:
-""")
-col1.image(str(DIR_IMG / "bio_hexagon.svg")) # placeholder
+model_input_img = util.get_newest_file_in_dir(DIR_MODEL_INPUT)
+while model_input_img == "": # wait until file exists in directory
+    model_input_img = util.get_newest_file_in_dir(DIR_MODEL_INPUT)
+    time.sleep(0.1)
+
+col1.image(str(model_input_img), width=500)
 
 ## RIGHT COLUMN
 
@@ -72,7 +74,10 @@ for label in model_labels.keys():
 while True: # wait until new file (with new labels) exists in directory, then refresh page
     # might be enough to just check for new file, not if labels are also equal
     model_output = util.get_newest_file_in_dir(DIR_MODEL_RESULTS)
-    model_labels_new = util.read_yolo_output(model_output)
+    if model_output == "": # also rerun if all files removed from dir
+        st.rerun()
+    else:
+        model_labels_new = util.read_yolo_output(model_output)
 
     if model_labels_new != model_labels:
         st.rerun()
