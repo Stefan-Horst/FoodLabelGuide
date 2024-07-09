@@ -8,12 +8,15 @@ from utils.globals import *
 # Use to get most recent model output file in respective directory
 def get_newest_file_in_dir(dir_path):
     file_paths = sorted(Path(dir_path).iterdir(), key=os.path.getmtime)
-    return file_paths[-1]
+    if len(file_paths) > 0:
+        return file_paths[-1]
+    else:
+        return ""
 
 
 # Read yolo model output file and return predicted labels with bounding boxes as a dict
 def read_yolo_output(file_name):
-    path = DIR_OUTPUT / file_name
+    path = DIR_MODEL_RESULTS / file_name
     file = open(path, "r")
     lines = file.readlines()
 
@@ -54,10 +57,11 @@ def read_label_dict(file_name):
 # Get data for specific label dict entry by label name
 def get_label_data(label_name, dict):
     for label, val in dict.items():
+        name = val["name"]
         description = val["description"]
         img_file_name = val["img_path"]
         img_path = DIR_IMG / img_file_name
 
         if label == label_name:
-            return img_path, description
+            return img_path, name, description
     return
