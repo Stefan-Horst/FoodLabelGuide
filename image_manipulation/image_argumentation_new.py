@@ -6,7 +6,7 @@ import cv2
 transform_strategies = [
     A.Compose([
         A.SafeRotate(limit=180, p=1.0),
-        A.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.2, p=1.0),
+        A.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.02, p=1.0),
     ], bbox_params=A.BboxParams(format='yolo', label_fields=['labels'], min_visibility=0.5)),
     
     A.Compose([
@@ -29,7 +29,7 @@ transform_strategies = [
 transform_strategies_no_bbox = [
     A.Compose([
         A.SafeRotate(limit=180, p=1.0),
-        A.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.2, p=1.0),
+        A.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.02, p=1.0),
     ]),
     
     A.Compose([
@@ -104,5 +104,5 @@ def process_images(image_dir, output_dir):
 
 # Example call
 input_dir = 'C:/Users/Felix/Documents/00_Master/03_SS-24/10_AISS_CV/datasets/training_data_complete'
-output_dir = 'C:/Users/Felix/Documents/00_Master/03_SS-24/10_AISS_CV/datasets/training_data_augmented_V2'
+output_dir = 'C:/Users/Felix/Documents/00_Master/03_SS-24/10_AISS_CV/datasets/training_data_augmented_V3'
 process_images(input_dir, output_dir)
