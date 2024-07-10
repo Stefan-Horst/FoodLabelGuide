@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 import json
 
-with open("main/gui/resources/label_dict.json", "r", encoding="utf-8") as f:
+with open("resources/label_dict.json", "r", encoding="utf-8") as f:
     label_dict = json.load(f)
 
 app = Flask(__name__)
