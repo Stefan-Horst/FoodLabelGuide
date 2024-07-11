@@ -43,3 +43,9 @@ sourceLbl.onmessage = (event) => {
   parent.appendChild(newElement);
   lblCounter++;
 };
+
+// event for new image data
+//const sourceImg = new EventSource('/img');
+//sourceImg.onmessage = (event) => {
+
+//}
