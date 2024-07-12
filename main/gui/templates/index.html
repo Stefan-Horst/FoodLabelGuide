@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -7,87 +7,65 @@
     <title>Food Label Recognition</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='custom.css') }}">
-    <style>
-        .image-placeholder {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-
-        .image-placeholder img {
-            max-width: 100%;
-        }
-
-        .card img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .card-header.collapsed {
-            background-color: #3aa747;
-            /* Color when collapsed */
-            color: #ffffff;
-            /* Text color when collapsed */
-        }
-
-        .card-header:not(.collapsed) {
-            background-color: #4a5158;
-            /* Color when expanded */
-            color: #000;
-            /* Text color when expanded */
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
     <div class="container">
+        <!-- HEADER -->
         <div class="row mt-2">
             <div class="col">
                 <h1>Food Label Recognition</h1>
                 <p>Take a picture of food products and get information on the labels their packaging might have.</p>
             </div>
         </div>
+
+        <!-- BODY -->
         <div class="row mt-4">
+            <!-- LEFT COLUMN -->
             <div class="col-md-6">
                 <div class="image-placeholder text-center">
                     <h3>Image Placeholder:</h3>
                     <img src="{{ url_for('static', filename='images/bio_hexagon.svg') }}" alt="Placeholder Image">
                 </div>
             </div>
+
+            <!-- RIGHT COLUMN -->
             <div class="col-md-6">
                 <h4>Identifizierte Label:</h4>
                 <div class="container mt-2">
-                    <div class="accordion" id="accordionExample">
-                        {% for item in data %}
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="heading{{ loop.index }}">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse{{ loop.index }}" aria-expanded="false"
-                                    aria-controls="collapse{{ loop.index }}">
-                                    <img height="40" src="{{ url_for('static', filename='images/' + item.img_path) }}"
-                                        alt="Placeholder Image">
-                                    <!-- <p>images/{{item.img_path}}</p> -->
-                                </button>
-                            </h2>
-                            <div id="collapse{{ loop.index }}" class="accordion-collapse collapse">
-                                <div class="accordion-body">
-                                    {{ item.description }}
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
+                    <div class="accordion" id="labels-accordion">
+                        <!-- label template is inserted here -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- TEMPLATES -->
+    <template id="label-template">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button d-flex gap-3 py-3" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapse" aria-expanded="true" aria-controls="collapse">
+                    <img class="flex-shrink-0" id="cimg" height="40" src="" alt="image">
+                    <div class="d-flex gap-2 w-100 justify-content-between">
+                        <h2 class="mb-0" id="clabel">label</h2>
+                    </div>
+                </button>
+            </h2>
+            <div class="accordion-collapse show" id="collapse">
+                <div class="accordion-body" id="cdiv">
+                    description
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='main.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

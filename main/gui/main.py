@@ -1,85 +1,57 @@
-import time
-import streamlit as st
+from flask import Flask, Response, json, render_template
+from time import sleep
 from utils.globals import *
 import utils.util as util
 
+app = Flask(__name__)
 
 label_dict = util.read_label_dict("label_dict.json")
 
-st.set_page_config(page_title="Food Label Recognition", 
-                   page_icon="🧃",
-                   layout="wide")
 
-# Make sure page renders from a clean slate on state changes (otherwise deleted elements will stay greyed-out in backgorund)
-def get_clean_rendering_container():
-    slot_in_use = st.session_state.slot_in_use = st.session_state.get("slot_in_use", "a")
-    if slot_in_use == "a":
-        slot_in_use = st.session_state.slot_in_use = "b"
-    else:
-        slot_in_use = st.session_state.slot_in_use = "a"
-
-    slot = {
-        "a": st.empty(),
-        "b": st.empty(),
-    }[slot_in_use]
-
-    return slot.container()
+@app.route("/")
+def index():
+    return render_template("index.html")
 
 
-## HEADER
+@app.route("/lbl")
+def stream_labels():
+    def gen_labels():
+        model_output = util.get_newest_file_in_dir(DIR_MODEL_RESULTS)
+        while model_output == "": # wait until file exists in directory
+            sleep(0.1)
+            model_output = util.get_newest_file_in_dir(DIR_MODEL_RESULTS)
+        model_labels = util.read_yolo_output(model_output)
 
-st.write("""
-# Food Label Recognition
-Take picture of food products and get information on the labels their packaging might have.
-""")
-st.divider()
+        while True:
+            for label in model_labels.keys():
+                img_path, name, description = util.get_label_data(label, label_dict)
+                data = {
+                    "img_path": str(img_path),
+                    "name": name,
+                    "description": description
+                }
+                print(json.dumps(data))
+                yield f"data: {json.dumps(data)}\n\n"
 
-## BODY - 2 COLUMNS
+            while True:
+                model_output = util.get_newest_file_in_dir(DIR_MODEL_RESULTS)
+                if model_output == "": # clear labels if directory is cleared
+                    print("empty dir")
+                    yield "data: clear\n\n"
+                    break
+                else:
+                    model_labels_new = util.read_yolo_output(model_output)
+                    if model_labels_new != model_labels: # clear labels then return new ones from outer loop
+                        model_labels = model_labels_new
+                        print("new image")
+                        yield "data: clear\n\n"
+                        break
+                    else:
+                        sleep(0.1)
+    
+    return Response(gen_labels(), mimetype="text/event-stream")
 
-cont = get_clean_rendering_container()
-col1, col2 = cont.columns(2)
 
-## LEFT COLUMN
-
-model_input_img = util.get_newest_file_in_dir(DIR_MODEL_INPUT)
-while model_input_img == "": # wait until file exists in directory
-    model_input_img = util.get_newest_file_in_dir(DIR_MODEL_INPUT)
-    time.sleep(0.1)
-
-col1.image(str(model_input_img), width=500)
-
-## RIGHT COLUMN
-
-model_output = util.get_newest_file_in_dir(DIR_MODEL_RESULTS)
-while model_output == "": # wait until file exists in directory
-    model_output = util.get_newest_file_in_dir(DIR_MODEL_RESULTS)
-    time.sleep(0.2)
-model_labels = util.read_yolo_output(model_output)
-
-for label in model_labels.keys():
-    img_path, label_name, label_description = util.get_label_data(label, label_dict)
-
-    with col2.expander(f"**{label_name}**", expanded=True):
-        scol1, scol2 = st.columns(2, vertical_alignment="center")
-
-        scol1.image(str(img_path), width=200)
-
-        scol2.write(f"""
-        ## {label_name}
-        {label_description}
-        """)
-
-## REFRESH SCRIPT
-
-while True: # wait until new file (with new labels) exists in directory, then refresh page
-    # might be enough to just check for new file, not if labels are also equal
-    model_output = util.get_newest_file_in_dir(DIR_MODEL_RESULTS)
-    if model_output == "": # also rerun if all files removed from dir
-        st.rerun()
-    else:
-        model_labels_new = util.read_yolo_output(model_output)
-
-    if model_labels_new != model_labels:
-        st.rerun()
-
-    time.sleep(0.2)
+if __name__ == "__main__":
+    app.run(debug=True, 
+            threaded=True)
