@@ -13,39 +13,53 @@ sourceLbl.onmessage = (event) => {
 
   // if label exists create new element from template and insert it into dom
   const template = document.querySelector("#label-template");
-  const newElement = template.content.cloneNode(true);
+  const newLabelElement = template.content.cloneNode(true);
 
   const img_path = JSON.parse(event.data).img_path;
   const name = JSON.parse(event.data).name;
   const description = JSON.parse(event.data).description;
 
   // set element content
-  let btnText = newElement.querySelector("#clabel");
+  let btnText = newLabelElement.querySelector("#clabel");
   btnText.textContent = name;
 
-  let cdiv = newElement.querySelector("#cdiv");
+  let cdiv = newLabelElement.querySelector("#cdiv");
   cdiv.textContent = description;
 
-  let img = newElement.querySelector("#cimg");
+  let img = newLabelElement.querySelector("#cimg");
   img.src = img_path;
   img.alt = name;
 
   // set element unique ids for bootstrap
   id = "collapse" + lblCounter;
 
-  let btn = newElement.querySelector("button");
+  let btn = newLabelElement.querySelector("button");
   btn.setAttribute("data-bs-target", "#" + id);
   btn.setAttribute("aria-controls", id);
 
-  let contentDiv = newElement.querySelector("#collapse");
+  let contentDiv = newLabelElement.querySelector("#collapse");
   contentDiv.id = id;
 
-  parent.appendChild(newElement);
+  parent.appendChild(newLabelElement);
   lblCounter++;
 };
 
 // event for new image data
-//const sourceImg = new EventSource('/img');
-//sourceImg.onmessage = (event) => {
+const sourceImg = new EventSource('/img');
+sourceImg.onmessage = (event) => {
+  const imgDiv = document.getElementById("image-box");
+  imgDiv.replaceChildren();
 
-//}
+  // if no label data just clear all existing labels
+  if (event.data === "clear") {
+    return;
+  }
+
+  imageUrl = event.data;
+
+  let newImgElement = document.createElement("img");
+  newImgElement.src = imageUrl;
+  newImgElement.alt = "Camera Image";
+
+  imgDiv.appendChild(newImgElement);
+}
