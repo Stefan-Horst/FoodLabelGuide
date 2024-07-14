@@ -20,6 +20,7 @@ h1 {
 .image-placeholder {
     border: 1px solid #4a5158;
     padding: 10px;
+    padding-bottom: 100%;
     margin-bottom: 20px;
 }
 
