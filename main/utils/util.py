@@ -6,10 +6,13 @@ from utils.globals import *
 
 
 # Use to get most recent model output file in respective directory
-def get_newest_file_in_dir(dir_path):
+def get_newest_file_in_dir(dir_path, full_path=True):
     file_paths = sorted(Path(dir_path).iterdir(), key=os.path.getmtime)
     if len(file_paths) > 0:
-        return file_paths[-1]
+        if full_path:
+            return file_paths[-1]
+        else:
+            return file_paths[-1].name # only file name
     else:
         return ""
 
@@ -60,7 +63,8 @@ def get_label_data(label_name, dict):
         name = val["name"]
         description = val["description"]
         img_file_name = val["img_path"]
-        img_path = DIR_IMG / img_file_name
+        #img_path = DIR_IMG / img_file_name # absolute path
+        img_path = DIR_IMG_REL + img_file_name
 
         if label == label_name:
             return img_path, name, description

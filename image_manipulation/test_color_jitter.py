@@ -5,47 +5,39 @@ import cv2
 # Define a list of augmentation strategies, each combination includes different transformations
 transform_strategies = [
     A.Compose([
-        A.SafeRotate(limit=180, p=1.0),
         A.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.2, p=1.0),
     ], bbox_params=A.BboxParams(format='yolo', label_fields=['labels'], min_visibility=0.5)),
     
     A.Compose([
-        A.RandomBrightnessContrast(brightness_limit=0.2, contrast_limit=0.2, p=1.0),
-        A.RandomSizedBBoxSafeCrop(height=200, width=200, p=1.0),
+        A.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.05, p=1.0),
     ], bbox_params=A.BboxParams(format='yolo', label_fields=['labels'], min_visibility=0.5)),
-    
+
     A.Compose([
-        A.HorizontalFlip(p=1.0),
-        A.GaussianBlur(blur_limit=(3, 7), p=1.0),
+        A.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.02, p=1.0),
     ], bbox_params=A.BboxParams(format='yolo', label_fields=['labels'], min_visibility=0.5)),
-    
+
     A.Compose([
-        A.VerticalFlip(p=1.0),
-        A.ElasticTransform(p=1.0),
-    ], bbox_params=A.BboxParams(format='yolo', label_fields=['labels'], min_visibility=0.5))
+        A.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0, p=1.0),
+    ], bbox_params=A.BboxParams(format='yolo', label_fields=['labels'], min_visibility=0.5)),
 ]
 
 # Augmentation strategies without bounding boxes
 transform_strategies_no_bbox = [
     A.Compose([
-        A.SafeRotate(limit=180, p=1.0),
         A.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.2, p=1.0),
     ]),
     
     A.Compose([
-        A.RandomBrightnessContrast(brightness_limit=0.2, contrast_limit=0.2, p=1.0),
-        A.CenterCrop(height=200, width=200, p=1.0),
+        A.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.05, p=1.0),
     ]),
-    
+
     A.Compose([
-        A.HorizontalFlip(p=1.0),
-        A.GaussianBlur(blur_limit=(3, 7), p=1.0),
+        A.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.02, p=1.0),
     ]),
-    
+
     A.Compose([
-        A.VerticalFlip(p=1.0),
-        A.ElasticTransform(p=1.0),
-    ])
+        A.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0, p=1.0),
+    ]),
 ]
 
 def read_yolo_labels(label_path):
@@ -104,5 +96,5 @@ def process_images(image_dir, output_dir):
 
 # Example call
 input_dir = 'C:/Users/Felix/Documents/00_Master/03_SS-24/10_AISS_CV/datasets/training_data_complete'
-output_dir = 'C:/Users/Felix/Documents/00_Master/03_SS-24/10_AISS_CV/datasets/training_data_augmented_V2'
+output_dir = 'C:/Users/Felix/Documents/00_Master/03_SS-24/10_AISS_CV/datasets/test_color_jitter'
 process_images(input_dir, output_dir)
