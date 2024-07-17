@@ -1,0 +1,11 @@
+Train:
+./darknet detector train [OBJ DATA PATH] [CFG PATH] yolov4-tiny.conv.29 -dont_show -map
+
+Inference Specific File:
+./darknet detector test [OBJ DATA PATH] [CFG PATH] [WEIGHTS PATH] [FILE PATH] -thresh 0.4 -dont_show -save_labels
+
+Inference All Paths in .txt:
+./darknet detector test [OBJ DATA PATH] [CFG PATH] [WEIGHTS PATH] -dont_show -ext_output < [TXT PATH] > result.txt
+
+Calculate map:
+./darknet detector map [OBJ DATA PATH] [CFG PATH] [WEIGHTS PATH] -thresh 0.35
