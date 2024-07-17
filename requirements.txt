@@ -1,6 +1,9 @@
+numpy
 pandas
 matplotlib
 opencv-python
 pillow
 albumentations
-streamlit
+flask
+darknet
+watchdog
