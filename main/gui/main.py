@@ -22,7 +22,17 @@ def stream_labels():
         while model_output == "": # wait until file exists in directory
             sleep(0.1)
             model_output = util.get_newest_file_in_dir(DIR_MODEL_RESULTS)
-        model_labels = util.read_yolo_output(model_output)
+        
+        while True: # make sure image can actually be loaded
+            try:
+                model_labels = util.read_yolo_output(model_output)
+                break
+            except:
+                print("lbl: file removed")
+
+            while model_output == "": # wait until file exists in directory
+                sleep(0.1)
+                model_output = util.get_newest_file_in_dir(DIR_MODEL_RESULTS)
 
         while True:
             for label in model_labels.keys():
@@ -32,24 +42,31 @@ def stream_labels():
                     "name": name,
                     "description": description
                 }
-                print(json.dumps(data))
+                print("lbl: ", json.dumps(data))
                 yield f"data: {json.dumps(data)}\n\n"
 
             while True:
-                model_output = util.get_newest_file_in_dir(DIR_MODEL_RESULTS)
-                if model_output == "": # clear labels if directory is cleared
+                model_output_new = util.get_newest_file_in_dir(DIR_MODEL_RESULTS)
+                if model_output_new == "" and model_output != "": # clear labels if directory is cleared
+                    model_output = ""
+                    model_labels = ""
                     print("lbl: empty dir")
                     yield "data: clear\n\n"
-                    break
-                else:
-                    model_labels_new = util.read_yolo_output(model_output)
+                elif model_output_new != "":
+                    model_output = model_output_new
+                    try: # make sure image can actually be loaded
+                        model_labels_new = util.read_yolo_output(model_output)
+                    except:
+                        print("lbl: file removed")
+                        sleep(0.1)
+                        continue
+
                     if model_labels_new != model_labels: # clear labels then return new ones from outer loop
                         model_labels = model_labels_new
                         print("lbl: new image")
                         yield "data: clear\n\n"
                         break
-                    else:
-                        sleep(0.1)
+                sleep(0.1)
     
     return Response(gen_labels(), mimetype="text/event-stream")
 
@@ -63,17 +80,18 @@ def stream_images():
         while model_input_img == "": # wait until file exists in directory
             sleep(0.1)
             model_input_img = util.get_newest_file_in_dir(DIR_INPUT_IMG, full_path=False)
-        print(DIR_INPUT_IMG_REL + model_input_img)
+        print("img: ", DIR_INPUT_IMG_REL + model_input_img)
         yield f"data: {DIR_INPUT_IMG_REL + model_input_img}\n\n"
 
         while True:
             model_input_img_new = util.get_newest_file_in_dir(DIR_INPUT_IMG, full_path=False)
-            if model_input_img_new == "": # clear image if directory is cleared
+            if model_input_img_new == "" and model_input_img != "": # clear image if directory is cleared
+                model_input_img = ""
                 print("img: empty dir")
                 yield "data: clear\n\n"
             elif model_input_img_new != model_input_img:
                 model_input_img = model_input_img_new
-                print(DIR_INPUT_IMG_REL + model_input_img)
+                print("img: ", DIR_INPUT_IMG_REL + model_input_img)
                 yield f"data: {DIR_INPUT_IMG_REL + model_input_img}\n\n"
             else:
                 sleep(0.1)
