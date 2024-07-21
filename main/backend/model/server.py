@@ -14,7 +14,7 @@ label_dict = util.read_label_dict("label_dict.json")
 network, class_names, class_colors = darknet.load_network(
     "label_detector/yolov4-tiny-labeldetector.cfg",
     "label_detector/obj.data",
-    "label_detector/yolov4-tiny-labeldetector.weights"
+    "label_detector/yolov4-tiny-labeldetector-alldata.weights"
 )
 
 width = darknet.network_width(network)
