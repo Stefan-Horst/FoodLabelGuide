@@ -1,9 +1,9 @@
 # How to run our model:
 
 ## 1-Compiling darknet on Jetson Nano:
-git clone https://github.com/AlexeyAB/darknet
+git clone https://github.com/AlexeyAB/darknet 
 
-Set these variables to 1:
+Open the Makefile and set these variables to 1:
 ```
 GPU=1
 CUDNN=1
@@ -15,7 +15,6 @@ LIBSO=1
 
 Comment the ARCH block and uncomment the line following: *Jetson TX1, Tegra X1, DRIVE CX, DRIVE PX*
 ```
-#  - uncomment:
 ARCH= -gencode arch=compute_53,code=[sm_53,compute_53]
 ```
 
