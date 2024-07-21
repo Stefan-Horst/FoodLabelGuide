@@ -1,7 +1,7 @@
 {
     "alnatura_bio": {
         "name": "Alnatura Bio",
-        "img_path": "alnatura_bio.jpg",
+        "img_path": "alnatura_bio.png",
         "description": "Dieses Siegel kennzeichnet Bio-Produkte der Marke Alnatura, die nach den EU-Bio-Verordnungen produziert werden. Es steht für nachhaltige Landwirtschaft und artgerechte Tierhaltung."
     },
     "asc_fish": {
@@ -41,7 +41,7 @@
     },
     "cocoa_for_future": {
         "name": "Cocoa for Future",
-        "img_path": "cocoa_for_future.jpg",
+        "img_path": "cocoa_for_future.png",
         "description": "Cocoa for Future: Dieses Siegel kennzeichnet nachhaltigen Kakaoanbau. Es steht für soziale und ökologische Standards im Kakaoanbau."
     },
     "demeter": {
@@ -106,12 +106,12 @@
     },
     "nutriscore": {
         "name": "Nutri-Score",
-        "img_path": "nutriscore.jpg",
+        "img_path": "nutriscore.png",
         "description": "Nutri-Score: Der Nutri-Score ist ein Nährwertkennzeichnungssystem, das Lebensmittel anhand ihrer Nährwertqualität bewertet. Es soll Verbrauchern helfen, gesündere Lebensmittelentscheidungen zu treffen."
     },
     "oeko_test_sehr_gut": {
         "name": "Öko-Test: Sehr Gut",
-        "img_path": "oeko_test_sehr_gut.jpg",
+        "img_path": "oeko_test_sehr_gut.png",
         "description": "Öko-Test Sehr Gut: Dieses Siegel kennzeichnet Produkte, die im Öko-Test-Magazin mit 'Sehr Gut' bewertet wurden. Es steht für hohe Qualität und gesundheitliche Unbedenklichkeit der getesteten Produkte."
     },
     "ohne_gentechnik": {
@@ -121,7 +121,7 @@
     },
     "qmilch": {
         "name": "QMILCH",
-        "img_path": "qmilch.jpg",
+        "img_path": "qmilch.png",
         "description": "QMILCH: Das QMILCH-Siegel kennzeichnet Textilprodukte, die aus Milchproteinfaser hergestellt wurden. Es steht für nachhaltige und innovative Materialherstellung."
     },
     "rainforest_alliance": {
