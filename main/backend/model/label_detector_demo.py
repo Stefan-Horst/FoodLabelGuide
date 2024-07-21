@@ -1,8 +1,9 @@
 import cv2
-import darknet
-import numpy as np
+import backend.model.model_utils as model
+from backend.model.model_utils import darknet, network, class_names, class_colors
 
-#Initialize the CSI camera don't touch!
+
+# Initialize the CSI camera (don't change code)
 def gstreamer_pipeline(
     sensor_id=0,
     capture_width=960,
@@ -26,22 +27,6 @@ def gstreamer_pipeline(
         )
     )
 
-#Loading darknet config and weights
-network, class_names, class_colors = darknet.load_network(
-    "label_detector/yolov4-tiny-labeldetector.cfg",
-    "label_detector/obj.data",
-    "label_detector/yolov4-tiny-labeldetector.weights"
-)
-
-width = darknet.network_width(network)
-height = darknet.network_height(network)
-
-def convert_to_darknet_image(frame):
-    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    frame_resized = cv2.resize(frame_rgb, (width, height), interpolation=cv2.INTER_LINEAR)
-    darknet_image = darknet.make_image(width, height, 3)
-    darknet.copy_image_from_bytes(darknet_image, frame_resized.tobytes())
-    return darknet_image
 
 def capture_video():
     cap = cv2.VideoCapture(gstreamer_pipeline(flip_method=0), cv2.CAP_GSTREAMER)
@@ -60,15 +45,15 @@ def capture_video():
             
             # Feed 1 frame per 10 frames to darknet
             if frame_count % 30 == 0:
-                darknet_image = convert_to_darknet_image(frame)
+                darknet_image = model.convert_to_darknet_image(frame)
                 
-                #Detection
+                # Detection
                 detections = darknet.detect_image(network, class_names, darknet_image)
                 darknet.free_image(darknet_image)
             
-            #Draw bbs
+            # Draw bbs
             image = darknet.draw_boxes(detections, frame, class_colors)
-            cv2.imshow('Detections', image) #comment this out for frontend
+            cv2.imshow('Detections', image)
 
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
@@ -78,6 +63,6 @@ def capture_video():
     cap.release()
     cv2.destroyAllWindows()
 
+
 if __name__ == "__main__":
     capture_video()
-

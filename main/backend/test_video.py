@@ -1,6 +1,6 @@
 import cv2
-import darknet
-import numpy as np
+import backend.model.model_utils as model
+from backend.model.model_utils import darknet, network, class_names, class_colors
 
 
 # Initialize the CSI camera (don't change code)
@@ -27,24 +27,6 @@ def gstreamer_pipeline(
         )
     )
 
-# Loading darknet config and weights
-network, class_names, class_colors = darknet.load_network(
-    "cfg/yolov4-tiny.cfg",
-    "cfg/coco.data",
-    "yolov4-tiny.weights"
-)
-
-width = darknet.network_width(network)
-height = darknet.network_height(network)
-
-
-def convert_to_darknet_image(frame):
-    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    frame_resized = cv2.resize(frame_rgb, (width, height), interpolation=cv2.INTER_LINEAR)
-    darknet_image = darknet.make_image(width, height, 3)
-    darknet.copy_image_from_bytes(darknet_image, frame_resized.tobytes())
-    return darknet_image
-
 
 def capture_video():
     cap = cv2.VideoCapture(gstreamer_pipeline(flip_method=0), cv2.CAP_GSTREAMER)
@@ -57,7 +39,7 @@ def capture_video():
         ret, frame = cap.read()
         if ret:
             frame = cv2.flip(frame, 0)
-            darknet_image = convert_to_darknet_image(frame)
+            darknet_image = model.convert_to_darknet_image(frame)
             
             # Detection
             detections = darknet.detect_image(network, class_names, darknet_image)
