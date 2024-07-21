@@ -2,30 +2,14 @@ from flask import Flask, Response, json, render_template
 from time import sleep
 from utils.globals import *
 import utils.util as util
+import backend.model.model_utils as model
 import cv2
-import darknet
-import os
+
 
 app = Flask(__name__)
 
 label_dict = util.read_label_dict("label_dict.json")
 
-#Loading darknet config and weights
-network, class_names, class_colors = darknet.load_network(
-    "label_detector/yolov4-tiny-labeldetector.cfg",
-    "label_detector/obj.data",
-    "label_detector/yolov4-tiny-labeldetector-alldata.weights"
-)
-
-width = darknet.network_width(network)
-height = darknet.network_height(network)
-
-def convert_to_darknet_image(frame):
-    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    frame_resized = cv2.resize(frame_rgb, (width, height), interpolation=cv2.INTER_LINEAR)
-    darknet_image = darknet.make_image(width, height, 3)
-    darknet.copy_image_from_bytes(darknet_image, frame_resized.tobytes())
-    return darknet_image
 
 @app.route("/")
 def index():
@@ -42,29 +26,13 @@ def stream_labels():
             sleep(0.1)
             model_input_img = util.get_newest_file_in_dir(DIR_INPUT_IMG)
         
-        frame = cv2.imread(str(model_input_img))
-        darknet_image = convert_to_darknet_image(frame)
-        #Detection
-        detections = darknet.detect_image(network, class_names, darknet_image)
-        darknet.free_image(darknet_image)
-        #Draw bbs
-        image = darknet.draw_boxes(detections, frame, class_colors)
-        cv2.imwrite(os.path.join(os.getcwd(), DIR_MODEL_RESULTS / "result.jpg"), image)
-
+        detections = model.detect_image(model_input_img)
         last_image = model_input_img
         last_data_list = None
         while True:
             model_input_img = util.get_newest_file_in_dir(DIR_INPUT_IMG)
             if model_input_img != last_image:
-                print("sa")
-                frame = cv2.imread(str(model_input_img))
-                darknet_image = convert_to_darknet_image(frame)
-                #Detection
-                detections = darknet.detect_image(network, class_names, darknet_image)
-                darknet.free_image(darknet_image)
-                #Draw bbs
-                image = darknet.draw_boxes(detections, frame, class_colors)
-                cv2.imwrite(os.path.join(os.getcwd(), DIR_MODEL_RESULTS / "result.jpg"), image)
+                detections = model.detect_image(model_input_img)
                 last_image = model_input_img
 
             data_list = []
