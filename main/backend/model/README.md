@@ -1,7 +1,15 @@
-# How to run our model:
+# How to run our model
 
-## 1-Compiling darknet on Jetson Nano:
-git clone https://github.com/AlexeyAB/darknet 
+With the provided `libdarknet.so` file, Darknet should run out of the box via the `darknet.py` python wrapper and you can skip right to step 2.
+
+Note that this only works for Linux-based systems.
+If it doesn't work or you are using Windows, Darknet needs to be compiled from scratch.
+Below are the respective instructions for the relevant Jetson Nano device.
+
+## 1 - Compiling Darknet on Jetson Nano
+
+Clone the Darknet git repository
+`git clone https://github.com/AlexeyAB/darknet`
 
 Open the Makefile and set these variables to 1:
 ```
@@ -21,28 +29,25 @@ ARCH= -gencode arch=compute_53,code=[sm_53,compute_53]
 Replace NVCC path:
 `NVCC=/usr/local/cuda/bin/nvcc`
 
-Compile darknet:
+Compile Darknet:
 ```
-$ cd ~/darknet
+$ cd darknet/
 $ make
 ```
 
 Make sure OpenCV is compiled with GPU and GStreamer support. We already provide such a setup in our Jetson Nano.
 
-## 2-Running our model:
+Finally, place the `libdarknet.so` file resulting from the compilation into this directory.
 
-### 2.1-Running the demo:
+## 2 - Testing the model:
 
+Try running the model demo to see if everything works.
+A window will open, showing the live camera feed with drawn in bounding boxes for detected food labels.
+
+### Running the demo:
+
+Run our YOLO model in standalone mode with a video stream from the camera:
 ```
-$ cd ~/darknet
-$ python3 label_detector_demo_optimized.py
-```
-
-### 2.2-Running the frontend:
-
-```
-$ cd ~/darknet
-$ python3 server.py
-$ cd ~/darknet/static/input_images
-$ nvgstcapture-1.0 #press j key
+$ cd backend/model/
+$ python3 label_detector_demo.py
 ```
