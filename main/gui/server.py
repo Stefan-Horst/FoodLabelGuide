@@ -21,16 +21,16 @@ def stream_labels():
     def gen_labels():
         yield "data: clear\n\n" # reset at beginning
 
-        model_input_img = util.get_newest_file_in_dir(DIR_INPUT_IMG)
+        model_input_img = util.get_newest_file_in_dir(DIR_MODEL_INPUT)
         while model_input_img == "": # wait until file exists in directory
             sleep(0.1)
-            model_input_img = util.get_newest_file_in_dir(DIR_INPUT_IMG)
+            model_input_img = util.get_newest_file_in_dir(DIR_MODEL_INPUT)
         
         detections = model.detect_image(model_input_img)
         last_image = model_input_img
         last_data_list = None
         while True:
-            model_input_img = util.get_newest_file_in_dir(DIR_INPUT_IMG)
+            model_input_img = util.get_newest_file_in_dir(DIR_MODEL_INPUT)
             if model_input_img != last_image:
                 detections = model.detect_image(model_input_img)
                 last_image = model_input_img
@@ -61,19 +61,19 @@ def stream_images():
     def gen_image_urls():
         yield "data: clear\n\n" # reset at beginning
 
-        model_input_img = util.get_newest_file_in_dir(DIR_INPUT_IMG, full_path=False)
+        model_input_img = util.get_newest_file_in_dir(DIR_WEB_RESULT_IMG, full_path=False)
         while model_input_img == "": # wait until file exists in directory
             sleep(0.1)
-            model_input_img = util.get_newest_file_in_dir(DIR_INPUT_IMG, full_path=False)
-        yield f"data: {DIR_INPUT_IMG_REL + model_input_img}\n\n"
+            model_input_img = util.get_newest_file_in_dir(DIR_WEB_RESULT_IMG, full_path=False)
+        yield f"data: {DIR_WEB_RESULT_IMG_REL + model_input_img}\n\n"
 
         while True:
-            model_input_img_new = util.get_newest_file_in_dir(DIR_INPUT_IMG, full_path=False)
+            model_input_img_new = util.get_newest_file_in_dir(DIR_WEB_RESULT_IMG, full_path=False)
             if model_input_img_new == "": # clear image if directory is cleared
                 yield "data: clear\n\n"
             elif model_input_img_new != model_input_img:
                 model_input_img = model_input_img_new
-                yield f"data: {DIR_INPUT_IMG_REL + model_input_img}\n\n"
+                yield f"data: {DIR_WEB_RESULT_IMG_REL + model_input_img}\n\n"
             else:
                 sleep(0.1)
     

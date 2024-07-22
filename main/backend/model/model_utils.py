@@ -4,6 +4,8 @@ import backend.model.darknet as darknet
 from utils.globals import *
 
 
+image_counter = 0 # file name counter for saved images
+
 # Loading darknet config and weights
 network, class_names, class_colors = darknet.load_network(
     str(DIR_MODEL_DATA / "yolov4-tiny-labeldetector.cfg"),
@@ -23,13 +25,15 @@ def convert_to_darknet_image(frame):
     return darknet_image
 
 
-def detect_image(image, file_name="result.jpg"):
+def detect_image(image, save_file=True, file_dir=DIR_WEB_RESULT_IMG, file_name="result"):
 	frame = cv2.imread(str(image))
 	darknet_image = convert_to_darknet_image(frame)
 	# Detection
 	detections = darknet.detect_image(network, class_names, darknet_image)
-	darknet.free_image(darknet_image)
-	# Draw bbs
-	image = darknet.draw_boxes(detections, frame, class_colors)
-	cv2.imwrite(os.path.join(os.getcwd(), DIR_MODEL_RESULTS / file_name), image)
+	if save_file:
+		darknet.free_image(darknet_image)
+		# Draw bbs
+		image = darknet.draw_boxes(detections, frame, class_colors)
+		path = file_dir / (file_name + str(image_counter) + ".jpg")
+		cv2.imwrite(os.path.join(os.getcwd(), path), image)
 	return detections
