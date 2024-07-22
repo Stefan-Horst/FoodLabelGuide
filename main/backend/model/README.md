@@ -51,3 +51,4 @@ Run our YOLO model in standalone mode with a video stream from the camera:
 $ cd backend/model/
 $ python3 label_detector_demo.py
 ```
+Press `Q` to stop the demo.

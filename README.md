@@ -24,6 +24,7 @@ Run our YOLO model in standalone mode with a video stream from the camera:
 $ cd backend/model/
 $ python3 label_detector_demo.py
 ```
+Press `Q` to stop the demo.
 
 ### Running the web app:
 
@@ -38,7 +39,7 @@ Press `Ctrl+C` inside the terminal window to stop the frontend.
 
 #### Start the camera:
 ```
-$ cd /backend/input_images
+$ cd backend/input_images/
 $ nvgstcapture-1.0  # Press J+Enter keys to take a picture
 ```
 You can take a picture by entering `J` into the terminal.
