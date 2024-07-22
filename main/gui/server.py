@@ -1,9 +1,10 @@
+import os
+import cv2
 from flask import Flask, Response, json, render_template
 from time import sleep
 from utils.globals import *
 import utils.util as util
 import backend.model.model_utils as model
-import cv2
 
 
 app = Flask(__name__)
@@ -13,6 +14,14 @@ label_dict = util.read_label_dict("label_dict.json")
 
 @app.route("/")
 def index():
+    try: # clear image directories to start with fresh blank web page
+        for f in os.listdir(DIR_MODEL_INPUT):
+            os.remove(DIR_MODEL_INPUT / f)
+        for f in os.listdir(DIR_WEB_RESULT_IMG):
+            os.remove(DIR_WEB_RESULT_IMG / f)
+    except:
+        print("startup: could not clear image directories")
+
     return render_template("index.html")
 
 
