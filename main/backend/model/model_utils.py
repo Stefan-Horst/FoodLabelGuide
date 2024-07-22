@@ -6,9 +6,9 @@ from utils.globals import *
 
 # Loading darknet config and weights
 network, class_names, class_colors = darknet.load_network(
-    str(DIR_MODEL_CFG / "yolov4-tiny-labeldetector.cfg"),
-    str(DIR_MODEL_CFG / "obj.data"),
-    str(DIR_MODEL_CFG / "yolov4-tiny-labeldetector-alldata.weights")
+    str(DIR_MODEL_DATA / "yolov4-tiny-labeldetector.cfg"),
+    str(DIR_MODEL_DATA / "obj.data"),
+    str(DIR_MODEL_DATA / "yolov4-tiny-labeldetector-alldata.weights")
 )
 
 width = darknet.network_width(network)

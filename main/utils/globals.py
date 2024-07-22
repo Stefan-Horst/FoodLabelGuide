@@ -17,7 +17,7 @@ DIR_RESOURCES = root_path / "gui/resources"
 DIR_IMG = root_path / "gui/resources/images"
 DIR_BACKEND = root_path / "backend"
 DIR_MODEL = root_path / "backend/model"
-DIR_MODEL_CFG = root_path / "backend/model/config"
+DIR_MODEL_DATA = root_path / "backend/model/data"
 DIR_UTIL = root_path / "util"
 
 DIR_IMG_REL = "/static/images/"
