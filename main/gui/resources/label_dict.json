@@ -4,7 +4,7 @@
         "img_path": "alnatura_bio.png",
         "description": "This seal identifies organic products of the Alnatura brand, produced according to EU organic regulations. It stands for sustainable agriculture and animal welfare."
     },
-    "asc_fish": {
+    "asc_fisch": {
         "name": "ASC Label",
         "img_path": "asc_fish.png",
         "description": "The ASC seal (Aquaculture Stewardship Council) identifies fish products from responsible farming. It guarantees environmentally friendly and socially responsible aquaculture practices."
@@ -81,7 +81,7 @@
     },
     "haltungsform": {
         "name": "Haltungsform Label",
-        "img_path": "haltungsform.svg",
+        "img_path": "haltungsform.png",
         "description": "This label categorizes animal products based on the farming conditions, ranging from basic to premium standards of animal welfare."
     },
     "igp_eu": {
@@ -94,7 +94,7 @@
         "img_path": "made_for_recycling.png",
         "description": "This seal identifies products that are particularly recyclable. It stands for environmentally friendly packaging and resource conservation."
     },
-    "msc_fish": {
+    "msc_fisch": {
         "name": "MSC Label",
         "img_path": "msc_fish.svg",
         "description": "The MSC seal (Marine Stewardship Council) identifies fish products from sustainable fishing. It guarantees environmentally friendly and responsible fishing practices."
