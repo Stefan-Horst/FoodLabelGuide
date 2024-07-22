@@ -1,5 +1,0 @@
-classes = 26 
-train = /home/jetson/Desktop/darknet/label_detector/train.txt
-valid = /home/jetson/Desktop/darknet/label_detector/datasets/test.txt
-names = /home/jetson/Desktop/darknet/label_detector/classes.txt
-backup = /home/jetson/Desktop/darknet/label_detector/backup
