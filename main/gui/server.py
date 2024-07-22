@@ -28,28 +28,32 @@ def stream_labels():
         
         detections = model.detect_image(model_input_img)
         last_image = model_input_img
-        last_data_list = None
+        last_data_list = []
         while True:
             model_input_img = util.get_newest_file_in_dir(DIR_MODEL_INPUT)
             if model_input_img != last_image:
                 detections = model.detect_image(model_input_img)
                 last_image = model_input_img
 
-            data_list = []
-            for label in detections:
-                img_path, name, description = util.get_label_data(label[0], label_dict)
-                data = {
-                    "img_path": str(img_path),
-                    "name": name,
-                    "description": description
-                }
-                data_list.append(json.dumps(data))
+            if len(detections) > 0:
+                data_list = []
+                for label in detections:
+                    img_path, name, description = util.get_label_data(label[0], label_dict)
+                    data = {
+                        "img_path": str(img_path),
+                        "name": name,
+                        "description": description
+                    }
+                    data_list.append(json.dumps(data))
+                detections = []
 
-            if data_list != last_data_list:
-                yield "data: clear\n\n"
-                for data in data_list:
-                    yield f"data: {data}\n\n"
-                last_data_list = data_list
+                if data_list != last_data_list:
+                    yield "data: clear\n\n"
+                    for data in data_list:
+                        yield f"data: {data}\n\n"
+                    last_data_list = data_list
+                else:
+                    sleep(0.1)
             else:
                 sleep(0.1)
     
@@ -81,6 +85,7 @@ def stream_images():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, 
+    app.run(host="0.0.0.0",
+            debug=True, 
             threaded=True)
 

@@ -68,4 +68,5 @@ def get_label_data(label_name, dict):
 
         if label == label_name:
             return img_path, name, description
-    return
+        
+    return "", "", ""
