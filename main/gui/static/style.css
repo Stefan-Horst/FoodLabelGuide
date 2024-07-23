@@ -35,21 +35,6 @@ h1 {
     transform: translateY(-50%);
 }
 
-.card img {
-    max-width: 100%;
-    height: auto;
-}
-
-.card-header.collapsed {
-    background-color: #3aa747;
-    /* Color when collapsed */
-    color: #ffffff;
-    /* Text color when collapsed */
-}
-
-.card-header:not(.collapsed) {
-    background-color: #4a5158;
-    /* Color when expanded */
-    color: #000;
-    /* Text color when expanded */
+.accordion-button img {
+    height: 80px;
 }
