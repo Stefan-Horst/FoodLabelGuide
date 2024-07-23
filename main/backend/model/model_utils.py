@@ -27,16 +27,26 @@ network, class_names, class_colors = darknet.load_network(
     str(DIR_MODEL_DATA / "yolov4-tiny-labeldetector-alldata.weights")
 )
 
+# 960x960
 width = darknet.network_width(network)
 height = darknet.network_height(network)
 
 
 def convert_to_darknet_image(frame):
-    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    frame_resized = cv2.resize(frame_rgb, (width, height), interpolation=cv2.INTER_LINEAR)
-    darknet_image = darknet.make_image(width, height, 3)
-    darknet.copy_image_from_bytes(darknet_image, frame_resized.tobytes())
-    return darknet_image
+	# crop landscape format image by cutting left and right sides to make it square (like model input)
+	fheight, fwidth, _ = frame.shape
+	margin = int((fwidth - fheight) / 2)
+	frame_cropped = frame[:, margin:fwidth-margin]
+	# use same (size) image for model input and to save with bboxes so bboxes are at correct position
+	frame_resized = cv2.resize(frame_cropped, (width, height), interpolation=cv2.INTER_LINEAR)
+
+	global current_image
+	current_image = frame_resized
+
+	frame_rgb = cv2.cvtColor(frame_resized, cv2.COLOR_BGR2RGB)
+	darknet_image = darknet.make_image(width, height, 3)
+	darknet.copy_image_from_bytes(darknet_image, frame_rgb.tobytes())
+	return darknet_image
 
 
 def detect_image(image):
@@ -47,9 +57,8 @@ def detect_image(image):
 	detections = darknet.detect_image(network, class_names, darknet_image)
 	darknet.free_image(darknet_image)
 
-	global current_detections, current_image
+	global current_detections
 	current_detections = detections
-	current_image = frame
 
 	return detections
 

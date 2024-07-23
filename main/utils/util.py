@@ -10,12 +10,12 @@ def get_uniques(array, key=lambda x: x):
     result = []
     seen_items = set()
     for item in array:
-        key = key(item)
-        if key in seen_items:
+        k = key(item)
+        if k in seen_items:
             continue
 
         result.append(item)
-        seen_items.add(key)
+        seen_items.add(k)
 
     return result
 
