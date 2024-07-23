@@ -1,5 +1,4 @@
 import os
-import cv2
 from flask import Flask, Response, json, render_template
 from time import sleep
 from utils.globals import *
@@ -67,11 +66,12 @@ def stream_labels():
                         yield f"data: {json.dumps(data)}\n\n"
                     last_data_list = data_list
                     continue
-
-            # clear label info if no labels are detected        
             else:
-                print("lbl: no label detections")
-                yield "data: clear\n\n"
+                # clear label info if no labels are detected and it hasn't been cleared yet
+                if last_data_list != []:
+                    print("lbl: no label detections")
+                    yield "data: clear\n\n"
+                    last_data_list = []
 
             sleep(0.1)
     
