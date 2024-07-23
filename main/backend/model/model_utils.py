@@ -1,4 +1,3 @@
-import os
 import cv2
 import backend.model.darknet as darknet
 from utils.globals import *
@@ -16,6 +15,10 @@ with open(DIR_MODEL / "data/obj.data", "w") as f:
 
 # file name counter for saved images
 image_counter = 0
+
+# cache image from current detection so it can be saved by other function
+current_detections = []
+current_image = []
 
 # Loading darknet config and weights
 network, class_names, class_colors = darknet.load_network(
@@ -36,17 +39,27 @@ def convert_to_darknet_image(frame):
     return darknet_image
 
 
-def detect_image(image, save_file=True, file_dir=DIR_WEB_RESULT_IMG, file_name="result"):
+def detect_image(image):
 	frame = cv2.imread(str(image))
 	darknet_image = convert_to_darknet_image(frame)
+
 	# Detection
 	detections = darknet.detect_image(network, class_names, darknet_image)
 	darknet.free_image(darknet_image)
-	if save_file:
-		global image_counter
-		# Draw bbs
-		image = darknet.draw_boxes(detections, frame, class_colors)
-		path = file_dir / (file_name + str(image_counter) + ".jpg")
-		cv2.imwrite(str(path), image)
-		image_counter = image_counter + 1
+
+	global current_detections, current_image
+	current_detections = detections
+	current_image = frame
+
 	return detections
+
+
+def save_current_image(file_dir=DIR_WEB_RESULT_IMG, file_name="result"):
+	if len(current_image) != 0: # check if image exists
+		global image_counter
+		# Draw bounding boxes
+		bb_image = darknet.draw_boxes(current_detections, current_image, class_colors)
+		path = file_dir / (file_name + str(image_counter) + ".jpg")
+		cv2.imwrite(str(path), bb_image)
+		image_counter = image_counter + 1
+	return
