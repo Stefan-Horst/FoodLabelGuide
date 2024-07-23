@@ -5,6 +5,21 @@ from pathlib import Path
 from utils.globals import *
 
 
+# From list of dicts get unique dicts by key
+def get_uniques(array, key=lambda x: x):
+    result = []
+    seen_items = set()
+    for item in array:
+        k = key(item)
+        if k in seen_items:
+            continue
+
+        result.append(item)
+        seen_items.add(k)
+
+    return result
+
+
 # Use to get most recent model output file in respective directory
 def get_newest_file_in_dir(dir_path, full_path=True):
     file_paths = sorted(Path(dir_path).iterdir(), key=os.path.getmtime)

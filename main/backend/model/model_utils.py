@@ -1,4 +1,3 @@
-import os
 import cv2
 import backend.model.darknet as darknet
 from utils.globals import *
@@ -17,6 +16,10 @@ with open(DIR_MODEL / "data/obj.data", "w") as f:
 # file name counter for saved images
 image_counter = 0
 
+# cache image from current detection so it can be saved by other function
+current_detections = []
+current_image = []
+
 # Loading darknet config and weights
 network, class_names, class_colors = darknet.load_network(
     str(DIR_MODEL_DATA / "yolov4-tiny-labeldetector.cfg"),
@@ -24,29 +27,48 @@ network, class_names, class_colors = darknet.load_network(
     str(DIR_MODEL_DATA / "yolov4-tiny-labeldetector-alldata.weights")
 )
 
+# 960x960
 width = darknet.network_width(network)
 height = darknet.network_height(network)
 
 
 def convert_to_darknet_image(frame):
-    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    frame_resized = cv2.resize(frame_rgb, (width, height), interpolation=cv2.INTER_LINEAR)
-    darknet_image = darknet.make_image(width, height, 3)
-    darknet.copy_image_from_bytes(darknet_image, frame_resized.tobytes())
-    return darknet_image
+	# crop landscape format image by cutting left and right sides to make it square (like model input)
+	fheight, fwidth, _ = frame.shape
+	margin = int((fwidth - fheight) / 2)
+	frame_cropped = frame[:, margin:fwidth-margin]
+	# use same (size) image for model input and to save with bboxes so bboxes are at correct position
+	frame_resized = cv2.resize(frame_cropped, (width, height), interpolation=cv2.INTER_LINEAR)
+
+	global current_image
+	current_image = frame_resized
+
+	frame_rgb = cv2.cvtColor(frame_resized, cv2.COLOR_BGR2RGB)
+	darknet_image = darknet.make_image(width, height, 3)
+	darknet.copy_image_from_bytes(darknet_image, frame_rgb.tobytes())
+	return darknet_image
 
 
-def detect_image(image, save_file=True, file_dir=DIR_WEB_RESULT_IMG, file_name="result"):
+def detect_image(image):
 	frame = cv2.imread(str(image))
 	darknet_image = convert_to_darknet_image(frame)
+
 	# Detection
 	detections = darknet.detect_image(network, class_names, darknet_image)
 	darknet.free_image(darknet_image)
-	if save_file:
-		global image_counter
-		# Draw bbs
-		image = darknet.draw_boxes(detections, frame, class_colors)
-		path = file_dir / (file_name + str(image_counter) + ".jpg")
-		cv2.imwrite(str(path), image)
-		image_counter = image_counter + 1
+
+	global current_detections
+	current_detections = detections
+
 	return detections
+
+
+def save_current_image(file_dir=DIR_WEB_RESULT_IMG, file_name="result"):
+	if len(current_image) != 0: # check if image exists
+		global image_counter
+		# Draw bounding boxes
+		bb_image = darknet.draw_boxes(current_detections, current_image, class_colors)
+		path = file_dir / (file_name + str(image_counter) + ".jpg")
+		cv2.imwrite(str(path), bb_image)
+		image_counter = image_counter + 1
+	return
