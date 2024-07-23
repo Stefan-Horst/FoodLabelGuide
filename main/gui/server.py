@@ -55,8 +55,11 @@ def stream_labels():
                         "description": description
                     }
                     data_list.append(data)
+                # keep each detected label only once for label list (labels can be detected multiple times per image)
+                data_list = util.get_uniques(data_list, key=lambda x: x["name"])
                 # make sure list containing the same labels is also always in same order
                 data_list.sort(key=lambda x: x["name"])
+                
 
                 # only update label info if labels have changed
                 if data_list != last_data_list:
