@@ -29,7 +29,7 @@ def gstreamer_pipeline(
 
 
 def capture_video():
-    cap = cv2.VideoCapture(gstreamer_pipeline(flip_method=0), cv2.CAP_GSTREAMER)
+    cap = cv2.VideoCapture(gstreamer_pipeline(flip_method=4), cv2.CAP_GSTREAMER)
     
     if not cap.isOpened():
         print("Error: Could not open camera.")
