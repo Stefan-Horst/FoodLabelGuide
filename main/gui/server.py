@@ -14,14 +14,6 @@ label_dict = util.read_label_dict("label_dict.json")
 
 @app.route("/")
 def index():
-    try: # clear image directories to start with fresh blank web page
-        for f in os.listdir(DIR_MODEL_INPUT):
-            os.remove(DIR_MODEL_INPUT / f)
-        for f in os.listdir(DIR_WEB_RESULT_IMG):
-            os.remove(DIR_WEB_RESULT_IMG / f)
-    except:
-        print("startup: could not clear image directories")
-
     return render_template("index.html")
 
 
@@ -114,7 +106,20 @@ def stream_images():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",
+    # clear image directories to start with fresh blank web page
+    try: 
+        for f in os.listdir(DIR_MODEL_INPUT):
+            os.remove(DIR_MODEL_INPUT / f)
+        print("startup: dir cleared: ", str(DIR_MODEL_INPUT))
+
+        for f in os.listdir(DIR_WEB_RESULT_IMG):
+            os.remove(DIR_WEB_RESULT_IMG / f)
+        print("startup: dir cleared: ", str(DIR_WEB_RESULT_IMG))
+    except:
+        print("startup: could not clear image directories")
+
+    # start flask server
+    app.run(host="0.0.0.0", # -> server visible in network, not just host computer
             debug=True, 
             threaded=True)
 
