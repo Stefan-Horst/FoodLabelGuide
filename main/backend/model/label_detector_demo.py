@@ -9,7 +9,7 @@ def gstreamer_pipeline(
     capture_width=960,
     capture_height=960,
     framerate=30,
-    flip_method=0,
+    flip_method=4,
 ):
     return (
         "nvarguscamerasrc sensor-id=%d ! video/x-raw(memory:NVMM), "
@@ -29,7 +29,7 @@ def gstreamer_pipeline(
 
 
 def capture_video():
-    cap = cv2.VideoCapture(gstreamer_pipeline(flip_method=4), cv2.CAP_GSTREAMER)
+    cap = cv2.VideoCapture(gstreamer_pipeline(), cv2.CAP_GSTREAMER)
     
     if not cap.isOpened():
         print("Error: Could not open camera.")
@@ -44,12 +44,14 @@ def capture_video():
             frame_count += 1
             
             # Feed 1 frame per 10 frames to darknet
-            if frame_count % 30 == 0:
+            if frame_count >= 30:
                 darknet_image = model.convert_to_darknet_image(frame)
                 
                 # Detection
                 detections = darknet.detect_image(network, class_names, darknet_image)
                 darknet.free_image(darknet_image)
+
+                frame_count = 0
             
             # Draw bbs
             image = darknet.draw_boxes(detections, frame, class_colors)
