@@ -32,25 +32,47 @@ width = darknet.network_width(network)
 height = darknet.network_height(network)
 
 
-def convert_to_darknet_image(frame):
-	# crop landscape format image by cutting left and right sides to make it square (like model input)
+# transform image to same dimensions as model expects as input
+def preprocess_image(frame):
 	fheight, fwidth, _ = frame.shape
+
+	# crop landscape format image by cutting left and right sides to make it square (like model input)
 	margin = int((fwidth - fheight) / 2)
 	frame_cropped = frame[:, margin:fwidth-margin]
+
 	# use same (size) image for model input and to save with bboxes so bboxes are at correct position
 	frame_resized = cv2.resize(frame_cropped, (width, height), interpolation=cv2.INTER_LINEAR)
+	return frame_resized
+
+
+def convert_to_darknet_image(frame, preprocess=True):
+	if preprocess:
+		frame = preprocess_image(frame)
+	else:
+		fheight, fwidth, _ = frame.shape
+		if fheight != height or fwidth != width:
+			print("model_utils: error - wrong image size")
+			return
 
 	global current_image
-	current_image = frame_resized
+	current_image = frame
 
-	frame_rgb = cv2.cvtColor(frame_resized, cv2.COLOR_BGR2RGB)
+	frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 	darknet_image = darknet.make_image(width, height, 3)
 	darknet.copy_image_from_bytes(darknet_image, frame_rgb.tobytes())
 	return darknet_image
 
 
-def detect_image(image):
-	frame = cv2.imread(str(image))
+# return predicted labels and bounding box coordinates for given image or path to image
+def detect_image(image, type="path"):
+	if type == "path":
+		frame = cv2.imread(str(image))
+	elif type == "file":
+		frame = image
+	else:
+		print("model_utils: error - wrong image type")
+		return
+	
 	darknet_image = convert_to_darknet_image(frame)
 
 	# Detection
@@ -63,12 +85,17 @@ def detect_image(image):
 	return detections
 
 
+def draw_bounding_boxes(detections, image):
+	bb_image = darknet.draw_boxes(detections, image, class_colors)
+	return bb_image
+
+
 def save_current_image(file_dir=DIR_WEB_RESULT_IMG, file_name="result"):
 	if len(current_image) != 0: # check if image exists
 		global image_counter
 		# Draw bounding boxes
-		bb_image = darknet.draw_boxes(current_detections, current_image, class_colors)
 		path = file_dir / (file_name + str(image_counter) + ".jpg")
+		bb_image = draw_bounding_boxes(current_detections, current_image)
 		cv2.imwrite(str(path), bb_image)
 		image_counter = image_counter + 1
 	return
