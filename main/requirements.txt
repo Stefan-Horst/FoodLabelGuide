@@ -2,4 +2,6 @@ numpy
 opencv-python
 flask
 darknet
-watchdog
+cv2
+#streamlit
+#watchdog

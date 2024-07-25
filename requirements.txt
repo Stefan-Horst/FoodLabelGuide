@@ -1,9 +1,8 @@
 numpy
 pandas
 matplotlib
+seaborn
 opencv-python
 pillow
 albumentations
-flask
-darknet
-watchdog
+cv2
