@@ -1,0 +1,162 @@
+{
+    "alnatura_bio": {
+        "name": "Alnatura Bio Label",
+        "img_path": "alnatura_bio.png",
+        "description": "This seal identifies organic products of the Alnatura brand, produced according to EU organic regulations. It stands for sustainable agriculture and animal welfare."
+    },
+    "asc_fisch": {
+        "name": "ASC Label",
+        "img_path": "asc_fish.png",
+        "description": "The ASC seal (Aquaculture Stewardship Council) identifies fish products from responsible farming. It guarantees environmentally friendly and socially responsible aquaculture practices."
+    },
+    "bioland": {
+        "name": "Bioland Label",
+        "img_path": "bioland.svg",
+        "description": "This seal stands for products from organic farming, produced according to the strict guidelines of the Bioland association. It promotes sustainable agriculture and the protection of natural resources."
+    },
+    "bio_hexagon": {
+        "name": "EU-Bio-Logo",
+        "img_path": "bio_hexagon.svg",
+        "description": "The EU organic logo identifies foods that comply with EU regulations for organic farming. It guarantees that at least 95% of the ingredients are from organic farming."
+    },
+    "bio_initiative_huhn_hahn": {
+        "name": "Bio-Initiative Huhn & Hahn",
+        "img_path": "bio_initiative_huhn_hahn.png",
+        "description": "This seal stands for a program that promotes the rearing of male chicks in organic poultry farming. It promotes more animal-friendly conditions and prevents the killing of male chicks."
+    },
+    "bio_kreis": {
+        "name": "Bio-Kreis",
+        "img_path": "bio_kreis.png",
+        "description": "The Bio-Kreis seal identifies products produced according to the strict criteria of the Bio-Kreis association. It stands for regional and organic farming as well as fair trade relations."
+    },
+    "blauer_engel": {
+        "name": "Blauer Engel",
+        "img_path": "blauer_engel.png",
+        "description": "This environmental label identifies particularly environmentally friendly products and services. It stands for high standards in environmental, health, and usability properties."
+    },
+    "bw_bio": {
+        "name": "Baden Württemberg Bio",
+        "img_path": "bw_bio.jpg",
+        "description": "This seal stands for organic products from Baden-Württemberg. It guarantees regional origin and organic production according to EU organic guidelines."
+    },
+    "cocoa_for_future": {
+        "name": "Cocoa for Future",
+        "img_path": "cocoa_for_future.png",
+        "description": "This seal identifies sustainable cocoa cultivation. It stands for social and environmental standards in cocoa farming."
+    },
+    "demeter": {
+        "name": "Demeter Label",
+        "img_path": "demeter.svg",
+        "description": "The Demeter seal identifies products from biodynamic farming. It stands for a holistic and biodynamic agriculture based on anthroposophical principles."
+    },
+    "dop_eu": {
+        "name": "DOP EU Label",
+        "img_path": "dop_eu.svg",
+        "description": "The DOP seal (Denominazione d'Origine Protetta) identifies products with protected designation of origin from the EU. It guarantees traditional production and origin from a specific region."
+    },
+    "eco_stars": {
+        "name": "EU-Organic Label",
+        "img_path": "eco_stars.svg",
+        "description": "The EU organic seal identifies foods produced according to the strict requirements of the EU organic regulation. It guarantees that at least 95% of the ingredients come from organic farming and that production is environmentally friendly and animal-friendly."
+    },
+    "edeka_bio": {
+        "name": "Edeka Bio Label",
+        "img_path": "edeka_bio.jpg",
+        "description": "Edeka Bio identifies organic products of the Edeka brand. It guarantees organic production according to EU organic guidelines."
+    },
+    "fairtrade_international": {
+        "name": "Fairtrade Label",
+        "img_path": "fairtrade_international.svg",
+        "description": "The Fairtrade seal stands for fairly traded products. It guarantees fair working conditions and prices for producers in developing countries."
+    },
+    "fsc": {
+        "name": "FSC Label",
+        "img_path": "fsc.svg",
+        "description": "The FSC seal identifies wood products from responsibly managed forests. It stands for sustainable forestry and the protection of forest resources."
+    },
+    "green_point": {
+        "name": "Green Point Label",
+        "img_path": "green_point.svg",
+        "description": "This seal identifies products that participate in the dual system for waste recycling. It stands for recycling and waste prevention."
+    },
+    "haltungsform": {
+        "name": "Haltungsform Label",
+        "img_path": "haltungsform.png",
+        "description": "This label categorizes animal products based on the farming conditions, ranging from basic to premium standards of animal welfare."
+    },
+    "igp_eu": {
+        "name": "IGP EU Label",
+        "img_path": "igp_eu.svg",
+        "description": "The IGP seal (Indicazione Geografica Protetta) identifies products with a protected geographical indication from the EU. It guarantees special quality and traditional production methods from a specific region."
+    },
+    "made_for_recycling": {
+        "name": "Made for Recycling",
+        "img_path": "made_for_recycling.png",
+        "description": "This seal identifies products that are particularly recyclable. It stands for environmentally friendly packaging and resource conservation."
+    },
+    "msc_fisch": {
+        "name": "MSC Label",
+        "img_path": "msc_fish.svg",
+        "description": "The MSC seal (Marine Stewardship Council) identifies fish products from sustainable fishing. It guarantees environmentally friendly and responsible fishing practices."
+    },
+    "naturland": {
+        "name": "Naturland Label",
+        "img_path": "naturland.png",
+        "description": "The Naturland seal identifies products from organic farming according to the strict guidelines of the Naturland association. It stands for environmentally friendly and socially responsible production methods."
+    },
+    "naturland_fair": {
+        "name": "Naturland Fair",
+        "img_path": "naturland_fair.jpg",
+        "description": "Naturland Fair: This seal combines the requirements of the Naturland seal with additional fair trade conditions. It guarantees social justice and fair prices for producers."
+    },
+    "nutriscore": {
+        "name": "Nutri-Score",
+        "img_path": "nutriscore.png",
+        "description": "The Nutri-Score is a nutrition labeling system that evaluates foods based on their nutritional quality. It is intended to help consumers make healthier food choices."
+    },
+    "oeko_test_sehr_gut": {
+        "name": "Öko-Test: Sehr Gut",
+        "img_path": "oeko_test_sehr_gut.png",
+        "description": "Öko-Test Sehr Gut: This seal identifies products that have been rated 'Very Good' by the Öko-Test magazine. It stands for high quality and safety of the tested products."
+    },
+    "ohne_gentechnik": {
+        "name": "Ohne Gentechnik Label",
+        "img_path": "ohne_gentechnik.svg",
+        "description": "This seal identifies foods that are produced without genetic engineering. It guarantees that no genetically modified organisms are present in the product."
+    },
+    "qmilch": {
+        "name": "QMILCH Label",
+        "img_path": "qmilch.png",
+        "description": "The QMILCH seal identifies textile products made from milk protein fiber. It stands for sustainable and innovative material production."
+    },
+    "rainforest_alliance": {
+        "name": "Rainforest Alliance",
+        "img_path": "rainforest_alliance.png",
+        "description": "The Rainforest Alliance seal identifies products from sustainable agriculture and forestry. It stands for biodiversity protection and fair working conditions."
+    },
+    "regional_fenster": {
+        "name": "Regionalfenster",
+        "img_path": "regional_fenster.jpg",
+        "description": "This seal identifies foods that come from a specific region. It guarantees transparency and regional origin of the products."
+    },
+    "speciality_eu": {
+        "name": "Speciality EU Label",
+        "img_path": "speciality_eu.svg",
+        "description": "This seal identifies foods with special quality or traditional production methods from the EU. It promotes traditional craftsmanship and regional specialties."
+    },
+    "vegan_international": {
+        "name": "Vegan International",
+        "img_path": "vegan_international.png",
+        "description": "Vegan International: This seal identifies products that contain no animal ingredients and are produced without animal testing. It stands for vegan"
+    },
+    "vegan_vegan_society": {
+        "name": "Vegan Flower Label",
+        "img_path": "vegan_vegan_society.png",
+        "description": "This seal from the Vegan Society identifies products that are completely vegan. It guarantees that no animal ingredients or animal testing are involved."
+    },
+    "vegetarisch_international": {
+        "name": "Vegetarian International Label",
+        "img_path": "vegetarisch_international.png",
+        "description": "This seal identifies products that contain no meat or fish ingredients. It stands for vegetarian foods made without animal ingredients except milk and eggs."
+    }
+}
