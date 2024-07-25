@@ -60,7 +60,6 @@ def stream_labels():
                 # make sure list containing the same labels is also always in same order
                 data_list.sort(key=lambda x: x["name"])
                 
-
                 # only update label info if labels have changed
                 if data_list != last_data_list:
                     yield "data: clear\n\n"
@@ -123,6 +122,6 @@ if __name__ == "__main__":
 
     # start flask server
     app.run(host="0.0.0.0", # -> server visible in network, not just host computer
-            debug=True, 
+            #debug=True, 
             threaded=True)
 
