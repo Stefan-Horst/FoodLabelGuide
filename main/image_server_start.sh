@@ -1,3 +1,3 @@
 #!/bin/bash
-cd gui/image/
+cd frontend/image/
 python3 server_image.py
