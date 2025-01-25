@@ -1,6 +1,11 @@
-# AISS CV Group 6 - Food Label Recognition
+# Food Label Guide
 
-**Detect common labels on food products using computer vision and provide information on them.**
+Webapp for recognizing food labels on products and providing the user information about them. Works for the 26 most common food labels in found in Germany. Runs with minimal hardware resources on the Jetson Nano device using a YOLOv4-tiny model trained on photos taken in german supermarkets. The webapp has modes for both taking single images and capturing video with live label detection using the Jetson Nano's CSI camera.
+Made as an university project during the AISS CV course at KIT.
+Below is a screenshot of the website during a live camera stream.
+
+![ui](documentation/figures/web_sample_cropped.PNG)
+## Project
 
 The frontend is a webapp showing information on detected labels. The web server uses the Flask framework. The website is built with HTML, CSS, and vanilla JavaScript. 
 Two different modes for either using single pictures or video stream are available.
@@ -32,7 +37,7 @@ Press `Q` to stop the demo.
 ### Running the web app for **video stream**:
 
 Run the web server in the terminal. It will start the camera by itself.
-When you load the website, the video stream will immediately start and show the live detected labels.
+When you load the website (the device's IP address), the video stream will immediately start and show the live detected labels.
 
 #### Start the web server:
 ```
@@ -43,7 +48,7 @@ Press `Ctrl+C` inside the terminal window to stop the frontend.
 ### Running the web app for **single images**:
 
 Run the web server and the camera in two different terminal windows.
-When you take a picture, the website shows it and the labels detected in it.
+When you take a picture, the website (the device's IP address) shows it and the labels detected in it.
 
 #### Start the web server:
 ```
@@ -58,12 +63,3 @@ $ bash camera_start.sh
 You can take a picture by entering `J` into the terminal.
 
 Press `Ctrl+C` or enter `Q` to stop the camera.
-
-## Wiki
-
-Important Information can be found in our [Wiki](https://gitlab.kit.edu/ukona/aiss_cv_group_6/-/wikis/pages).
-
-### Labelling:
-
-**IMPORTANT**
-Please read the [labelling wiki](https://gitlab.kit.edu/ukona/aiss_cv_group_6/-/wikis/Labeling-Convention) before labelling any images to ensure consistency with our labelling rules!
