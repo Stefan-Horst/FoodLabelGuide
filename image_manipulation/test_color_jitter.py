@@ -95,6 +95,6 @@ def process_images(image_dir, output_dir):
                 cv2.imwrite(transformed_image_path, cv2.cvtColor(transformed_image, cv2.COLOR_RGB2BGR))
 
 # Example call
-input_dir = 'C:/Users/Felix/Documents/00_Master/03_SS-24/10_AISS_CV/datasets/training_data_complete'
-output_dir = 'C:/Users/Felix/Documents/00_Master/03_SS-24/10_AISS_CV/datasets/test_color_jitter'
+input_dir = '../datasets/training_data_complete'
+output_dir = '../datasets/test_color_jitter'
 process_images(input_dir, output_dir)

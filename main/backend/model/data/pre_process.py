@@ -3,8 +3,8 @@ from PIL import Image
 
 # Define the directories
 directories = [
-    "/home/oguyig00/aiss/aiss_cv_group_6/data/datasets/training_data_augmented_V4_deleted_and_merged",
-    "/home/oguyig00/aiss/aiss_cv_group_6/data/datasets/training_data_augmented_V4_deleted_not_merged"
+    "/home/data/datasets/training_data_augmented_V4_deleted_and_merged",
+    "/home/data/datasets/training_data_augmented_V4_deleted_not_merged"
 ]
 
 # Function to ensure each jpg has a corresponding txt
@@ -32,6 +32,6 @@ for directory in directories:
     ensure_txt_files(directory)
 
 # Resize images in the negative samples directory
-#resize_images("/home/oguyig00/aiss/aiss_cv_group_6/data/datasets/negative_samples")
+#resize_images("/home/data/datasets/negative_samples")
 
 print("Task completed successfully.")

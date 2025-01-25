@@ -60,8 +60,8 @@ def visualize(image_path, label_path, classes_path):
 
 
 # Example usage:
-image_path = r"C:\Users\Felix\Documents\00_Master\03_SS-24\10_AISS_CV\datasets\training_data_augmented\positive\IMG_20240515_175800.jpg"
-label_path = r"C:\Users\Felix\Documents\00_Master\03_SS-24\10_AISS_CV\datasets\training_data_augmented\positive\IMG_20240515_175800.txt"
-classes_path = r"C:\Users\Felix\Documents\00_Master\03_SS-24\10_AISS_CV\datasets\training_data_complete\classes.txt"
+image_path = "../datasets/training_data_augmented/positive/IMG_20240515_175800.jpg"
+label_path = "../datasets/training_data_augmented/positive/IMG_20240515_175800.txt"
+classes_path = "../datasets/training_data_complete/classes.txt"
 
 visualize(image_path, label_path, classes_path)

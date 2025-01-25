@@ -13,8 +13,8 @@ transform = A.Compose([
 ], bbox_params=A.BboxParams(format='yolo', label_fields=['class_labels']))
 
 # Paths
-input_dir = 'C:/Users/Felix/Documents/00_Master/03_SS-24/10_AISS_CV/datasets/training_data_complete'
-output_dir = 'C:/Users/Felix/Documents/00_Master/03_SS-24/10_AISS_CV/datasets/training_data_augmented'
+input_dir = '../datasets/training_data_complete'
+output_dir = '../datasets/training_data_augmented'
 output_dir_positive = os.path.join(output_dir, 'positive')
 output_dir_negative = os.path.join(output_dir, 'negative')
 

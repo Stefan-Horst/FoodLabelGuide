@@ -45,9 +45,9 @@ def resize_images_in_directory(input_dir, output_dir, size=(960, 960)):
 
 
 if __name__ == "__main__":
-    input_directory = "C:/Users/mucki/Downloads/images_without_labels_scheckin_01_06"
+    input_directory = "../images_without_labels_scheckin_01_06"
     output_directory = (
-        "C:/Users/mucki/Downloads/images_without_labels_scheckin_01_06_resized"
+        "../images_without_labels_scheckin_01_06_resized"
     )
 
     resize_images_in_directory(input_directory, output_directory)

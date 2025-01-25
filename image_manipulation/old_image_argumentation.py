@@ -81,6 +81,6 @@ def main(input_dir, output_dir):
             augment_image(image, labels, output_dir, filename)
 
 if __name__ == "__main__":
-    input_dir = '../Tianran_resized'
-    output_dir = '../Tianran_augmented'
+    input_dir = '../resized'
+    output_dir = '../augmented'
     main(input_dir, output_dir)
